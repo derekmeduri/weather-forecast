@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Forecast</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="navbar">
+        <h1>Weather Forecast</h1>
+      </div>
+    </header>
+    <main>
+      <div>
+        <h3>Search for a City:</h3>
+      </div>
+      <!--search bar-->
+      <div class="input-bar">
+        <input type="text" id="input" placeholder="Enter a City" />
+        <button type="button" id="search-button"></button>
+      </div>
+      <!--last searched city-->
+      <div id="currentWeather">
+        <div id="cityInfo"></div>
+      </div>
+      <!--search history-->
+      <div>
+        <ul id="search-history"></ul>
+      </div>
+
+      <div>
+        <h3>5 Day Forecast:</h3>
+      </div>
+      <div id="fiveday"></div>
+    </main>
+    <!--js file-->
+    <script src="./assets/script.js"></script>
+  </body>
+</html>
