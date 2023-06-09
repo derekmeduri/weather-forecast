@@ -1,6 +1,7 @@
 //api key
 var apkiKey = "eebbf925abd804c24b8227298e056052";
 var searchHistory = [];
+var today = moment().format('l');
 
 //functiion to get current weather from user search
 function currentWeather() {
@@ -10,7 +11,11 @@ function currentWeather() {
     $.ajax({
         url: weatherUrl,
         method: "GET",
-    }).then()
+    }).then(function(weatherResponse)){
+        $("#currentWeather").css.("display", "block");
+        $("#cityInfo").empty();
+
+    }
     //var for city input
     var city = 
 
@@ -42,7 +47,7 @@ function forecastWeather() {
             icon: forecastResponse.daily[i].weather[0].icon,
             temp: forecastResponse.daily[i].temp.day,
             humidity: forecastResponse.daily[i].humidity,
-        }
+        };
 
     }
 
