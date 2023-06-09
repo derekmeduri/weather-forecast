@@ -17,4 +17,10 @@ function currentWeather() {
 
 function forecastWeather() {
     var forecastUrl = "https://api.openweathermap.org/data/3.0/onecall?lat=39.9622601&lon=-83.0007065&exclude=current,minutely,hourly,alerts,&units=imperial&appid=eebbf925abd804c24b8227298e056052";
+
+    //need a for loop for 5 day forecast
+    for ()
+
 }
+
+//add event listener
