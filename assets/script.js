@@ -4,7 +4,7 @@ var searchHistory = [];
 var today = moment().format('l');
 
 //functiion to get current weather from user search
-function currentWeather() {
+function currentWeather(userCity) {
     //openweather api 
     var weatherUrl = "https://api.openweathermap.org/data/2.5/weather?lat=39.9622601&lon=-83.0007065&units=imperial&appid=eebbf925abd804c24b8227298e056052";
     //ajax method 
@@ -17,16 +17,42 @@ function currentWeather() {
         console.log(weatherResponse);
         //var to store icon info
         var iconCode = weatherResponse.weather[0].icon;
-        var iconUrl = "";
+        var iconUrl = " https://openweathermap.org/img/wn/10d@2x.png";
 
   
     //var for city input
-    var city = weatherResponse.name;
+    var city =$('
+        <h2 id="city">
+        ${weatherResponse.name} ${today}
+        </h2>
+        <p>Temperature: </p>
+        <p>Humidity:</p>
+        <p>Wind Speed: MPH</p>
+        ');
+ 
+
     //var for longitude 
     var lon = weatherResponse.coord.lon;
     //var for latitude 
     var lat = weatherResponse.coord.lat;
-    
+    //var for uv index url
+    var uviURL = "https://api.openweathermap.org/data/2.5/uvi?lat=39.9622601&lon=-83.0007065&appid=eebbf925abd804c24b8227298e056052";
+
+    //ajax function
+    $.ajax({
+        url: uviURL,
+        method: "GET",
+    }).then(function(uviResponse) {
+        console.log(uviResponse);
+        var uvIndex = uviResponse.value;
+        var uviEl = $('
+        <p>UV Index:
+        </p>
+        ')
+        ;
+
+        $("cityInfo").append();
+    })
     
 
 });
