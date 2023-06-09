@@ -24,3 +24,9 @@ function forecastWeather() {
 }
 
 //add event listener
+$("search-button").on("click", function (event) {
+    event.preventDefault();
+
+})
+
+//need local storage to save searches
