@@ -11,19 +11,25 @@ function currentWeather() {
     $.ajax({
         url: weatherUrl,
         method: "GET",
-    }).then(function(weatherResponse)){
+    }).then(function(weatherResponse){
         $("#currentWeather").css.("display", "block");
         $("#cityInfo").empty();
+        console.log(weatherResponse);
+        //var to store icon info
+        var iconCode = weatherResponse.weather[0].icon;
+        var iconUrl = "";
 
-    }
+  
     //var for city input
-    var city = 
-
-    //var for latitude 
-    var lat = 
+    var city = weatherResponse.name;
     //var for longitude 
-    var lon =
+    var lon = weatherResponse.coord.lon;
+    //var for latitude 
+    var lat = weatherResponse.coord.lat;
+    
+    
 
+});
 }
 
 function forecastWeather() {
