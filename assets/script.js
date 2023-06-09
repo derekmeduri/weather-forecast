@@ -6,7 +6,7 @@ var today = moment().format('l');
 //functiion to get current weather from user search
 function currentWeather(userCity) {
     //openweather api 
-    var weatherUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=${userCity}&limit=5&appid=${apiKey}';
+    var weatherUrl = "http://api.openweathermap.org/geo/1.0/direct?q=${userCity}&limit=5&appid=${apiKey}";
     //ajax method 
     $.ajax({
         url: weatherUrl,
@@ -21,14 +21,14 @@ function currentWeather(userCity) {
 
   
     //var for city input
-    var city =$('
-        <h2 id="city">
+    var city = $('
+    <h2 id="cityWeather">
         ${weatherResponse.name} ${today}
         </h2>
         <p>Temperature: </p>
         <p>Humidity:</p>
         <p>Wind Speed: MPH</p>
-        ');
+       ');
  
 
     //var for longitude 
