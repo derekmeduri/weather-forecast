@@ -32,7 +32,7 @@ function currentWeather() {
 });
 }
 
-function forecastWeather() {
+function forecastWeather(lon, lat) {
     //url for 5 day forecast
     //openweather api
     var forecastUrl = "https://api.openweathermap.org/data/3.0/onecall?lat=39.9622601&lon=-83.0007065&exclude=current,minutely,hourly,alerts,&units=imperial&appid=eebbf925abd804c24b8227298e056052";
@@ -55,6 +55,7 @@ function forecastWeather() {
             humidity: forecastResponse.daily[i].humidity,
         };
 
+
     }
 
 }
@@ -65,10 +66,17 @@ $("search-button").on("click", function (event) {
 
     var userCity = $("#input").val().trim();
     currentWeather(userCity);
+    if(!searchHistory.includes(userCity)){
+        searchHistory.push(userCity);
+        var prevCity = $('
+        <li class="list-item">${userCity}</li>'
+        );
+        $("search-history").append(prevCity); 
+    }
 
-    var prevCity;
+    
 //need local storage to save searches
-localStorage.setItem("city", JSON.stringify());
+localStorage.setItem("city", JSON.stringify(searchHistory));
 console.log(searchHistory);
-})
+});
 
