@@ -27,6 +27,12 @@ function forecastWeather() {
 $("search-button").on("click", function (event) {
     event.preventDefault();
 
+    var userCity = $("#input").val().trim();
+    currentWeather(userCity);
+
+    var prevCity;
+//need local storage to save searches
+localStorage.setItem("city", JSON.stringify());
+console.log(searchHistory);
 })
 
-//need local storage to save searches
