@@ -6,7 +6,7 @@ var today = moment().format('l');
 //functiion to get current weather from user search
 function currentWeather(userCity) {
     //openweather api 
-    var weatherUrl = "https://api.openweathermap.org/data/2.5/weather?lat=39.9622601&lon=-83.0007065&units=imperial&appid=eebbf925abd804c24b8227298e056052";
+    var weatherUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=${userCity}&limit=5&appid=${apiKey}';
     //ajax method 
     $.ajax({
         url: weatherUrl,
@@ -17,7 +17,7 @@ function currentWeather(userCity) {
         console.log(weatherResponse);
         //var to store icon info
         var iconCode = weatherResponse.weather[0].icon;
-        var iconUrl = " https://openweathermap.org/img/wn/10d@2x.png";
+        var iconUrl = "";
 
   
     //var for city input
