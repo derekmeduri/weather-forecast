@@ -24,6 +24,10 @@ function currentWeather(userCity) {
     var city = $(
       '<h2 id="cityWeather">',
       weatherResponse.name + today,
+      "<img src=",
+      iconUrl,
+      "alt=",
+      weatherResponse.weather[0].description,
       "</h2> <p>Temperature:",
       weatherResponse.main.temp,
       "</p>  <p>Humidity:",
@@ -32,7 +36,8 @@ function currentWeather(userCity) {
       weatherResponse.wind.speed,
       "MPH</p>"
     );
-
+    //appending info for current city
+    $("#cityInfo").append(city);
     //var for longitude
     var lon = weatherResponse.coord.lon;
     //var for latitude
