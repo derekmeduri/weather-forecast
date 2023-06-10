@@ -12,7 +12,7 @@ function currentWeather(userCity) {
         url: weatherUrl,
         method: "GET",
     }).then(function(weatherResponse){
-        $("#currentWeather").css.("display", "block");
+        $("#currentWeather").css.$("display", "block");
         $("#cityInfo").empty();
         console.log(weatherResponse);
         //var to store icon info
@@ -21,14 +21,7 @@ function currentWeather(userCity) {
 
   
     //var for city input
-    var city = $('
-    <h2 id="cityWeather">
-        ${weatherResponse.name} ${today}
-        </h2>
-        <p>Temperature: </p>
-        <p>Humidity:</p>
-        <p>Wind Speed: MPH</p>
-       ');
+    var city = $(' <h2 id="cityWeather">  ${weatherResponse.name} ${today} </h2>  <p>Temperature: </p>  <p>Humidity:</> <p>Wind Speed: MPH</p>');
  
 
     //var for longitude 
@@ -36,7 +29,7 @@ function currentWeather(userCity) {
     //var for latitude 
     var lat = weatherResponse.coord.lat;
     //var for uv index url
-    var uviURL = "https://api.openweathermap.org/data/2.5/uvi?lat=39.9622601&lon=-83.0007065&appid=eebbf925abd804c24b8227298e056052";
+    var uviURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + ${lat} + "&lon=" + ${lon} + "&appid=" + ${apiKey};
 
     //ajax function
     $.ajax({
@@ -45,13 +38,11 @@ function currentWeather(userCity) {
     }).then(function(uviResponse) {
         console.log(uviResponse);
         var uvIndex = uviResponse.value;
-        var uviEl = $('
-        <p>UV Index:
-        </p>
-        ')
-        ;
+        var uviEl = $('<p>UV Index:  </p> ') ;
 
         $("cityInfo").append();
+    
+        forecastWeather(lon, lat);
     })
     
 
@@ -61,7 +52,7 @@ function currentWeather(userCity) {
 function forecastWeather(lon, lat) {
     //url for 5 day forecast
     //openweather api
-    var forecastUrl = "https://api.openweathermap.org/data/3.0/onecall?lat=39.9622601&lon=-83.0007065&exclude=current,minutely,hourly,alerts,&units=imperial&appid=eebbf925abd804c24b8227298e056052";
+    var forecastUrl = 'https://api.openweathermap.org/data/3.0/onecall?lat='+ {lat} + '&lon=' + ${lon} + '&exclude=current,minutely,hourly,alerts,&units=imperial&appid=' + ${apiKey};
     //ajax function to empty and get forecast weather
     $.ajax({
         url: forecastUrl,
@@ -94,9 +85,7 @@ $("search-button").on("click", function (event) {
     currentWeather(userCity);
     if(!searchHistory.includes(userCity)){
         searchHistory.push(userCity);
-        var prevCity = $('
-        <li class="list-item">${userCity}</li>'
-        );
+        var prevCity = $('  <li class="list-item">${userCity}</li>');
         $("search-history").append(prevCity); 
     }
 
