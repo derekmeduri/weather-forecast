@@ -22,7 +22,15 @@ function currentWeather(userCity) {
 
     //var for city input
     var city = $(
-      ' <h2 id="cityWeather">${weatherResponse.name}${today}</h2>  <p>Temperature: </p>  <p>Humidity:</> <p>Wind Speed: MPH</p>'
+      '<h2 id="cityWeather">',
+      weatherResponse.name + today,
+      "</h2> <p>Temperature:",
+      weatherResponse.main.temp,
+      "</p>  <p>Humidity:",
+      weatherResponse.wind.humidity,
+      "</p> <p>Wind Speed:",
+      weatherResponse.wind.speed,
+      "MPH</p>"
     );
 
     //var for longitude
@@ -94,7 +102,7 @@ $("search-button").on("click", function (event) {
   currentWeather(userCity);
   if (!searchHistory.includes(userCity)) {
     searchHistory.push(userCity);
-    var prevCity = $('  <li class="list-item">${userCity}</li>');
+    var prevCity = $('  <li class="list-item"> ${userCity} </li>');
     $("search-history").append(prevCity);
   }
 
