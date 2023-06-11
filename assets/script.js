@@ -60,9 +60,9 @@ function currentWeather(userCity) {
       //var to save uv index
       var uvIndex = uviResponse.value;
       //var to add uv index to weather forecast
-      var uviEl = $("<p>UV Index:  </p> ");
-
-      $("cityInfo").append();
+      var uviEl = $("<p>UV Index: <span>", uvIndex, "</span> </p>");
+      //append uv index element
+      $("cityInfo").append(uviEl);
 
       forecastWeather(lon, lat);
     });
