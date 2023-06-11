@@ -107,7 +107,11 @@ function forecastWeather(lon, lat) {
       temp: forecastResponse.daily[i].temp.day,
       humidity: forecastResponse.daily[i].humidity,
     };
-  }
+  };
+  //create a variable to save forecast 
+  var forecastCard; 
+  //apend forecast card to page
+  $("#fiveday").append(forecastCard);
 }
 
 //add event listener
