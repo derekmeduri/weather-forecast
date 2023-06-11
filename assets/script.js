@@ -63,8 +63,19 @@ function currentWeather(userCity) {
       var uviEl = $("<p>UV Index: <span>", uvIndex, "</span> </p>");
       //append uv index element
       $("cityInfo").append(uviEl);
-
+    //runs function for 5 day forecast weather
       forecastWeather(lon, lat);
+      if (uvIndex >= 0 && uvIndex <= 2){
+        //color uv index green
+      } else if ( ) {
+        //color uv index yellow
+      } else if () {
+        //color uv index orange
+      } else if () {
+        //color uv index red 
+      } else {
+        //color uv index purple
+      }
     });
   });
 }
