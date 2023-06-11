@@ -1,5 +1,5 @@
 //api key
-var apkiKey = "eebbf925abd804c24b8227298e056052";
+var apiKey = "eebbf925abd804c24b8227298e056052";
 var searchHistory = [];
 var today = moment().format("l");
 
@@ -7,13 +7,17 @@ var today = moment().format("l");
 function currentWeather(userCity) {
   //openweather api
   var weatherUrl =
-    "http://api.openweathermap.org/geo/1.0/direct?q=${userCity}&limit=5&appid=${apiKey}";
+    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    userCity +
+    "&limit=5&appid=" +
+    apiKey;
+
   //ajax method
   $.ajax({
     url: weatherUrl,
     method: "GET",
   }).then(function (weatherResponse) {
-    $("#currentWeather").css.$("display", "block");
+    $("#currentWeather").css("display", "block");
     $("#cityInfo").empty();
     console.log(weatherResponse);
     //var to store icon info
@@ -31,7 +35,7 @@ function currentWeather(userCity) {
       "</h2> <p>Temperature:",
       weatherResponse.main.temp,
       "</p>  <p>Humidity:",
-      weatherResponse.wind.humidity,
+      weatherResponse.main.humidity,
       "</p> <p>Wind Speed:",
       weatherResponse.wind.speed,
       "MPH</p>"
@@ -66,10 +70,13 @@ function currentWeather(userCity) {
         "</span> </p>"
       );
       //append uv index element
-      $("cityInfo").append(uviEl);
+      $("#cityInfo").append(uviEl);
+
       //runs function for 5 day forecast weather
       forecastWeather(lon, lat);
 
+      //if else to color uv index
+      //UV Index colors 0-2 green, 3-5 yellow, 6-7 orange, 8-10 red, 11+ violet found on google
       if (uvIndex >= 0 && uvIndex <= 2) {
         //color uv index green
         $("#indexColor").css("background-color", "green").css("color", "white");
@@ -124,23 +131,30 @@ function forecastWeather(lon, lat) {
       humidity: forecastResponse.daily[i].humidity,
     };
   }
+
+  //need to get the icon from open weather api
+  var weatherIcon =
+    '<img src="https://openweathermap.org/img/wn/"' +
+    cityInfo.icon +
+    '".png" alt="" ';
+
   //create a variable to save forecast
-  var forecastCard;
+  var forecastCard = $('<div class="forecast-card"><h5></h5></div>');
   //apend forecast card to page
   $("#fiveday").append(forecastCard);
 }
 
 //add event listener
-$("search-button").on("click", function (event) {
+$("#search-button").on("click", function (event) {
   event.preventDefault();
 
   var userCity = $("#input").val().trim();
   currentWeather(userCity);
   if (!searchHistory.includes(userCity)) {
     searchHistory.push(userCity);
-    var prevCity = $('  <li class="list-item">', userCity, "</li>");
+    var prevCity = $('<li class="list-item">', userCity, "</li>");
     //append searched city to list
-    $("search-history").append(prevCity);
+    $("#search-history").append(prevCity);
   }
 
   //need local storage to save searches
