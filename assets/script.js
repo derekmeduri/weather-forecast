@@ -60,21 +60,37 @@ function currentWeather(userCity) {
       //var to save uv index
       var uvIndex = uviResponse.value;
       //var to add uv index to weather forecast
-      var uviEl = $("<p>UV Index: <span>", uvIndex, "</span> </p>");
+      var uviEl = $(
+        "<p>UV Index: <span id='indexColor>",
+        uvIndex,
+        "</span> </p>"
+      );
       //append uv index element
       $("cityInfo").append(uviEl);
-    //runs function for 5 day forecast weather
+      //runs function for 5 day forecast weather
       forecastWeather(lon, lat);
-      if (uvIndex >= 0 && uvIndex <= 2){
+
+      if (uvIndex >= 0 && uvIndex <= 2) {
         //color uv index green
-      } else if ( ) {
+        $("#indexColor").css("background-color", "green").css("color", "white");
+      } else if (uvIndex >= 3 && uvIndex <= 5) {
         //color uv index yellow
-      } else if () {
+        $("#indexColor")
+          .css("background-color", "yellow")
+          .css("color", "white");
+      } else if (uvIndex >= 6 && uvIndex <= 7) {
         //color uv index orange
-      } else if () {
-        //color uv index red 
+        $("#indexColor")
+          .css("background-color", "orange")
+          .css("color", "white");
+      } else if (uvIndex >= 8 && uvIndex <= 10) {
+        //color uv index red
+        $("#indexColor").css("background-color", "red").css("color", "white");
       } else {
         //color uv index purple
+        $("#indexColor")
+          .css("background-color", "violet")
+          .css("color", "white");
       }
     });
   });
@@ -107,9 +123,9 @@ function forecastWeather(lon, lat) {
       temp: forecastResponse.daily[i].temp.day,
       humidity: forecastResponse.daily[i].humidity,
     };
-  };
-  //create a variable to save forecast 
-  var forecastCard; 
+  }
+  //create a variable to save forecast
+  var forecastCard;
   //apend forecast card to page
   $("#fiveday").append(forecastCard);
 }
@@ -122,7 +138,8 @@ $("search-button").on("click", function (event) {
   currentWeather(userCity);
   if (!searchHistory.includes(userCity)) {
     searchHistory.push(userCity);
-    var prevCity = $('  <li class="list-item"> ${userCity} </li>');
+    var prevCity = $('  <li class="list-item">', userCity, "</li>");
+    //append searched city to list
     $("search-history").append(prevCity);
   }
 
