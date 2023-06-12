@@ -7,9 +7,9 @@ var today = moment().format("l");
 function currentWeather(userCity) {
   //openweather api
   var weatherUrl =
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
     userCity +
-    "&limit=5&appid=" +
+    "&units=imperial&appid=" +
     apiKey;
 
   //ajax method
@@ -20,6 +20,7 @@ function currentWeather(userCity) {
     $("#currentWeather").css("display", "block");
     $("#cityInfo").empty();
     console.log(weatherResponse);
+    console.log(data);
     //var to store icon info
     var iconCode = weatherResponse.weather[0].icon;
     var iconUrl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
@@ -55,6 +56,7 @@ function currentWeather(userCity) {
       "&appid=" +
       apiKey;
 
+    console.log(lat, lon);
     //ajax function
     $.ajax({
       url: uviURL,
@@ -133,13 +135,24 @@ function forecastWeather(lon, lat) {
   }
 
   //need to get the icon from open weather api
+  var day = moment.unix(cityInfo.date).format("MM/DD/YYYY");
   var weatherIcon =
     '<img src="https://openweathermap.org/img/wn/"' +
     cityInfo.icon +
     '".png" alt="" ';
 
   //create a variable to save forecast
-  var forecastCard = $('<div class="forecast-card"><h5></h5></div>');
+  var forecastCard = $(
+    '<div class="forecast-card"><h5>',
+    day,
+    "</h5><p>",
+    weatherIcon,
+    "</p> <p>Temperature: ",
+    cityInfo.temp,
+    "</p> <p>Humidity: ",
+    cityInfo.humidity,
+    "</p></div>"
+  );
   //apend forecast card to page
   $("#fiveday").append(forecastCard);
 }
@@ -160,4 +173,19 @@ $("#search-button").on("click", function (event) {
   //need local storage to save searches
   localStorage.setItem("city", JSON.stringify(searchHistory));
   console.log(searchHistory);
+});
+
+$(document).on("click", "list-item", function () {
+  var cityList = $(this).text();
+  currentWeather(cityList);
+});
+
+$(document).ready(function () {
+  var searchHistoryList = JSON.parse(localStorage.getItem("city"));
+
+  //   if (searchHistoryList !== null) {
+  //     var searchArr = searchHistoryList.length - 1;
+  //     var prevSearchedCity = searchArr[prevSearchedCity];
+  //     currentWeather(prevSearchedCity);
+  //   }
 });
