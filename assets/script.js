@@ -23,23 +23,25 @@ $(document).ready(function () {
       //console.log(weatherResponse);
       //var to store icon info
       var iconCode = weatherResponse.weather[0].icon;
-      var iconUrl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
+      var iconUrl = "https://openweathermap.org/img/w/" + iconCode + ".png";
 
       //var for city input
       var city = $(
-        '<h2 id="cityWeather">',
-        weatherResponse.name + today,
-        "<img src=",
-        iconUrl,
-        "alt=",
-        weatherResponse.weather[0].description,
-        "</h2> <p>Temperature:",
-        weatherResponse.main.temp,
-        "</p>  <p>Humidity:",
-        weatherResponse.main.humidity,
-        "</p> <p>Wind Speed:",
-        weatherResponse.wind.speed,
-        "MPH</p>"
+        '<h2 id="cityWeather">' +
+          weatherResponse.name +
+          "" +
+          today +
+          "<img src=" +
+          iconUrl +
+          "alt=" +
+          weatherResponse.weather[0].description +
+          "</h2> <p>Temperature:" +
+          weatherResponse.main.temp +
+          "</p>  <p>Humidity:" +
+          weatherResponse.main.humidity +
+          "</p> <p>Wind Speed:" +
+          weatherResponse.wind.speed +
+          "MPH</p>"
       );
       //appending info for current city
       $("#cityInfo").append(city);
@@ -169,7 +171,7 @@ $(document).ready(function () {
     currentWeather(userCity);
     if (!searchHistory.includes(userCity)) {
       searchHistory.push(userCity);
-      var prevCity = $('<li class="list-item">', userCity, "</li>");
+      var prevCity = $('<li class="list-item">' + userCity + "</li>");
       //append searched city to list
       $("#search-history").append(prevCity);
     }
