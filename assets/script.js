@@ -189,7 +189,7 @@ $(document).ready(function () {
     }
   });
   //trying to make list item clickable
-  $("list-item").on("click", function () {
+  $("#list-item").on("click", function () {
     var cityList = $(this).text();
     currentWeather(cityList);
   });
