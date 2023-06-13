@@ -164,7 +164,7 @@ $(document).ready(function () {
   //add event listener
   $("#search-button").on("click", function (event) {
     event.preventDefault();
-
+    //takes user city from input bar
     var userCity = $("#input").val().trim();
     currentWeather(userCity);
     if (!searchHistory.includes(userCity)) {
@@ -179,7 +179,7 @@ $(document).ready(function () {
     //need local storage to save searches
     localStorage.setItem("city", JSON.stringify(searchHistory));
     console.log(searchHistory);
-
+    //json to get saved city
     var searchHistoryList = JSON.parse(localStorage.getItem("city"));
     //if statement to check search history cities
     if (searchHistoryList !== null) {
@@ -188,7 +188,7 @@ $(document).ready(function () {
       //currentWeather(prevSearchedCity);
     }
   });
-
+  //trying to make list item clickable
   $("list-item").on("click", function () {
     var cityList = $(this).text();
     currentWeather(cityList);
