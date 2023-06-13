@@ -20,7 +20,7 @@ $(document).ready(function () {
       $("#currentWeather").css("display", "block");
       $("#cityInfo").empty();
 
-      //console.log(weatherResponse);
+      console.log(weatherResponse);
       //var to store icon info
       var iconCode = weatherResponse.weather[0].icon;
       var iconUrl = "https://openweathermap.org/img/w/" + iconCode + ".png";
@@ -29,17 +29,17 @@ $(document).ready(function () {
       var city = $(
         '<h2 id="cityWeather">' +
           weatherResponse.name +
-          "" +
+          " " +
           today +
-          "<img src=" +
+          "</h2><img src=" +
           iconUrl +
           "alt=" +
           weatherResponse.weather[0].description +
-          "</h2> <p>Temperature:" +
+          "</h2> <p>Temperature: " +
           weatherResponse.main.temp +
-          "</p>  <p>Humidity:" +
+          "°F </p>  <p>Humidity: " +
           weatherResponse.main.humidity +
-          "</p> <p>Wind Speed:" +
+          "% </p> <p>Wind Speed: " +
           weatherResponse.wind.speed +
           "MPH</p>"
       );
@@ -58,16 +58,16 @@ $(document).ready(function () {
         "&appid=" +
         apiKey;
 
-      console.log(lat, lon);
+      //console.log(lat, lon);
       //ajax function
       $.ajax({
         url: uviURL,
         method: "GET",
       }).then(function (uviResponse) {
-        console.log(uviResponse);
         //var to save uv index
-        var uvIndex = uviResponse.value;
+        var uvIndex = this.value;
         //var to add uv index to weather forecast
+        console.log(uviResponse);
         var uviEl = $(
           "<p>UV Index: <span id='indexColor>" + uvIndex + "</span> </p>"
         );
@@ -189,7 +189,7 @@ $(document).ready(function () {
     }
   });
 
-  $(document).on("click", "list-item", function () {
+  $("list-item").on("click", function () {
     var cityList = $(this).text();
     currentWeather(cityList);
   });

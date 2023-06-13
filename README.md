@@ -6,6 +6,8 @@ We are tasked with creating a 5 day weather forecast for a client. The applicati
 
 deploy link: https://derekmeduri.github.io/weather-forecast/
 
+![preview of application](./assets/images/weatherapp.png)
+
 sources used in the writing of this application
 https://jquery.com/
 https://www.w3schools.com/jquery/jquery_ref_ajax.asp

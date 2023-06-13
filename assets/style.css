@@ -1,3 +1,23 @@
+.header {
+    text-align: center;
+    background-color: navy;
+    color: white;
+}
+li.list-item{
+    margin: .5em
+;
+}
 ul {
     list-style-type: none;
+}
+div#fiveday {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.forecast-card {
+    background-color: navy;
+    color: white;
+        
 }
