@@ -69,9 +69,7 @@ $(document).ready(function () {
         var uvIndex = uviResponse.value;
         //var to add uv index to weather forecast
         var uviEl = $(
-          "<p>UV Index: <span id='indexColor>",
-          uvIndex,
-          "</span> </p>"
+          "<p>UV Index: <span id='indexColor>" + uvIndex + "</span> </p>"
         );
         //append uv index element
         $("#cityInfo").append(uviEl);
@@ -171,7 +169,9 @@ $(document).ready(function () {
     currentWeather(userCity);
     if (!searchHistory.includes(userCity)) {
       searchHistory.push(userCity);
-      var prevCity = $('<li class="list-item">' + userCity + "</li>");
+      var prevCity = $(
+        '<li class="list-item"> <button>' + userCity + "</button></li>"
+      );
       //append searched city to list
       $("#search-history").append(prevCity);
     }
