@@ -31,17 +31,17 @@ $(document).ready(function () {
           weatherResponse.name +
           " " +
           today +
-          "</h2><img src=" +
+          '</h2><img src="' +
           iconUrl +
-          "alt=" +
+          '"alt="' +
           weatherResponse.weather[0].description +
-          "</h2> <p>Temperature: " +
+          '"/> <p>Temperature: "' +
           weatherResponse.main.temp +
           "°F </p>  <p>Humidity: " +
           weatherResponse.main.humidity +
           "% </p> <p>Wind Speed: " +
           weatherResponse.wind.speed +
-          "MPH</p>"
+          " MPH</p>"
       );
       //appending info for current city
       $("#cityInfo").append(city);
@@ -141,7 +141,7 @@ $(document).ready(function () {
           cityInfo.icon +
           '".png" alt="' +
           forecastResponse.daily[i].weather[0].description +
-          '" ';
+          '" />';
 
         //create a variable to save forecast
         var forecastCard = $(
