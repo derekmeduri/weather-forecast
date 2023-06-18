@@ -35,9 +35,9 @@ $(document).ready(function () {
           iconUrl +
           '"alt="' +
           weatherResponse.weather[0].description +
-          '"/> <p>Temperature: "' +
+          '"/> <p>Temperature: ' +
           weatherResponse.main.temp +
-          "°F </p>  <p>Humidity: " +
+          " °F </p>  <p>Humidity: " +
           weatherResponse.main.humidity +
           "% </p> <p>Wind Speed: " +
           weatherResponse.wind.speed +
@@ -65,7 +65,7 @@ $(document).ready(function () {
         method: "GET",
       }).then(function (uviResponse) {
         //var to save uv index
-        var uvIndex = this.value;
+        var uvIndex = uviResponse.value;
         //var to add uv index to weather forecast
         console.log(uviResponse);
         var uviEl = $(
@@ -137,12 +137,12 @@ $(document).ready(function () {
         //need to get the icon from open weather api
         var day = moment.unix(cityInfo.date).format("MM/DD/YYYY");
         var weatherIcon =
-          '<img src="https://openweathermap.org/img/wn/"' +
+          '<img src="https://openweathermap.org/img/wn/' +
           cityInfo.icon +
-          '".png" alt="' +
+          '.png" alt="' +
           forecastResponse.daily[i].weather[0].description +
-          '" />';
-
+          '"/>';
+        console.log(weatherIcon);
         //create a variable to save forecast
         var forecastCard = $(
           '<div class="forecast-card"><div><h5>' +
@@ -151,9 +151,9 @@ $(document).ready(function () {
             weatherIcon +
             "</p> <p>Temperature: " +
             cityInfo.temp +
-            "</p> <p>Humidity: " +
+            " °F </p> <p>Humidity: " +
             cityInfo.humidity +
-            "</p></div>"
+            "% </p></div>"
         );
         //apend forecast card to page
         $("#fiveday").append(forecastCard);
