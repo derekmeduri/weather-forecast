@@ -69,7 +69,7 @@ $(document).ready(function () {
         //var to add uv index to weather forecast
         console.log(uviResponse);
         var uviEl = $(
-          "<p>UV Index: <span id='indexColor>" + uvIndex + "</span> </p>"
+          "<p>UV Index: <span id='indexColor'>" + uvIndex + "</span> </p>"
         );
         //append uv index element
         $("#cityInfo").append(uviEl);
@@ -100,7 +100,7 @@ $(document).ready(function () {
         } else {
           //color uv index purple
           $("#indexColor")
-            .css("background-color", "violet")
+            .css("background-color", "purple")
             .css("color", "white");
         }
       });
