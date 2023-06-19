@@ -2,6 +2,8 @@
     text-align: center;
     background-color: navy;
     color: white;
+    margin: 0;
+    padding: 0;
 }
 li.list-item{
     margin: .5em
@@ -19,5 +21,7 @@ div#fiveday {
 .forecast-card {
     background-color: navy;
     color: white;
+    justify-content: center;
+    text-align: center;
         
 }

@@ -170,7 +170,9 @@ $(document).ready(function () {
     if (!searchHistory.includes(userCity)) {
       searchHistory.push(userCity);
       var prevCity = $(
-        '<li class="list-item"> <button>' + userCity + "</button></li>"
+        '<li class="list-item"> <button type="button" id="button">' +
+          userCity +
+          "</button></li>"
       );
       //append searched city to list
       $("#search-history").append(prevCity);
@@ -189,8 +191,9 @@ $(document).ready(function () {
     }
   });
   //trying to make list item clickable
-  $("#list-item").on("click", function () {
+  $(document).on("click", "#button", function () {
     var cityList = $(this).text();
+    //console.log(cityList);
     currentWeather(cityList);
   });
 });
